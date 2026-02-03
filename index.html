@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GuardIA - The European AI Firewall</title>
     <style>
-        /* Style inspiré du "Manifesto" Open Source : Propre, Rapide, Sans fioritures */
+        /* Style "No Nonsense" (Inspiré de uBlock Origin) */
         :root {
             --primary: #3b78e7; /* Bleu GuardIA */
             --dark: #2c3e50;
@@ -23,9 +23,8 @@
             padding: 0;
         }
 
-        /* En-tête style "Console/Dashboard" */
         header {
-            background-color: #24292e; /* Couleur GitHub/Code */
+            background-color: #24292e;
             color: white;
             padding: 20px 0;
             border-bottom: 4px solid var(--primary);
@@ -48,40 +47,48 @@
         h1 { margin: 0; font-size: 1.8rem; font-weight: 600; }
         .version { font-size: 0.8rem; background: #444; padding: 2px 8px; border-radius: 4px; margin-left: 10px; color: #ddd; }
         
-        /* Corps de page */
         main { padding: 40px 0; }
 
         .hero-section {
             background: white;
-            padding: 30px;
+            padding: 40px;
             border: 1px solid var(--border);
             border-radius: 6px;
             margin-bottom: 30px;
+            text-align: center; /* Centré pour le Store */
         }
 
-        h2 { border-bottom: 1px solid var(--border); padding-bottom: 10px; color: var(--dark); margin-top: 0; }
+        h2 { border-bottom: 1px solid var(--border); padding-bottom: 10px; color: var(--dark); margin-top: 0; text-align: left;}
         
         .manifesto {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: #555;
-            margin-bottom: 25px;
+            margin-bottom: 35px;
+            text-align: left;
         }
 
-        /* Le bouton de téléchargement "Technique" */
-        .btn-primary {
-            display: inline-block;
+        /* Bouton Chrome Store */
+        .btn-store {
+            display: inline-flex;
+            align-items: center;
             background-color: var(--primary);
             color: white;
-            padding: 12px 24px;
+            padding: 15px 30px;
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: 6px;
             font-weight: 600;
-            transition: background 0.2s;
+            font-size: 1.1rem;
+            transition: background 0.2s, transform 0.1s;
+            box-shadow: 0 4px 6px rgba(59, 120, 231, 0.2);
         }
-        .btn-primary:hover { background-color: #2a5db0; }
-        .sub-text { font-size: 0.85rem; color: #777; margin-top: 5px; }
+        .btn-store:hover { background-color: #2a5db0; transform: translateY(-2px); }
+        
+        /* Icône Chrome dans le bouton */
+        .chrome-icon {
+            width: 24px; height: 24px; margin-right: 12px;
+            filter: brightness(0) invert(1); /* Rend l'icône blanche */
+        }
 
-        /* Grille de fonctionnalités style "Specs" */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -97,42 +104,18 @@
         .card h3 { margin-top: 0; color: var(--dark); font-size: 1.1rem; }
         .card p { font-size: 0.95rem; color: #666; margin-bottom: 0; }
 
-        /* Badges de confiance */
         .badge-list { margin-top: 15px; }
         .badge {
-            display: inline-block;
-            font-size: 0.75rem;
-            padding: 3px 8px;
-            border-radius: 3px;
-            margin-right: 5px;
-            font-family: monospace;
+            display: inline-block; font-size: 0.75rem; padding: 3px 8px;
+            border-radius: 3px; margin-right: 5px; font-family: monospace;
         }
         .badge-green { background: #e6fffa; color: #2c7a7b; border: 1px solid #b2f5ea; }
         .badge-blue { background: #ebf8ff; color: #2b6cb0; border: 1px solid #bee3f8; }
 
         footer {
-            text-align: center;
-            padding: 40px 0;
-            color: #888;
-            font-size: 0.9rem;
-            border-top: 1px solid var(--border);
-            margin-top: 40px;
+            text-align: center; padding: 40px 0; color: #888;
+            font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 40px;
         }
-        
-        code { background: #f0f0f0; padding: 2px 5px; border-radius: 3px; font-family: Consolas, monospace; }
-        
-        /* Guide d'installation minimaliste */
-        .install-box {
-            background-color: #f1f8ff;
-            border: 1px solid #c8e1ff;
-            padding: 15px;
-            border-radius: 6px;
-            margin-top: 20px;
-        }
-        .install-box h4 { margin: 0 0 10px 0; color: #0366d6; }
-        .install-box ol { margin: 0; padding-left: 20px; font-size: 0.95rem; }
-        .install-box li { margin-bottom: 5px; }
-
     </style>
 </head>
 <body>
@@ -152,24 +135,20 @@
     <div class="hero-section">
         <h2>Finally, an efficient privacy shield for AI.</h2>
         <p class="manifesto">
-            GuardIA is <strong>not</strong> an "AI assistant". It is a strict <strong>Data Loss Prevention (DLP)</strong> firewall.
-            <br>
+            GuardIA is <strong>not</strong> an "AI assistant". It is a strict <strong>Data Loss Prevention (DLP)</strong> firewall.<br>
             It blocks sensitive data (IBAN, SSN, Files) from leaving your browser before it reaches ChatGPT or Copilot.
         </p>
 
-        <div style="margin: 25px 0;">
-            <a href="GuardIA_v2.5.zip" class="btn-primary">Download GuardIA v2.5 (ZIP)</a>
-            <div class="sub-text">Free for personal use. Open source code (Source Available).</div>
-        </div>
-
-        <div class="install-box">
-            <h4>⚡ Manual Installation (Developer Mode)</h4>
-            <ol>
-                <li>Unzip the file.</li>
-                <li>Go to <code>chrome://extensions</code> in your browser.</li>
-                <li>Enable <strong>Developer mode</strong> (top right).</li>
-                <li>Drag and drop the unzipped folder.</li>
-            </ol>
+        <a href="#" class="btn-store">
+            <svg class="chrome-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0ZM12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22Z" fill="white" fill-opacity="0.2"/>
+                <path d="M12 4.5C7.85786 4.5 4.5 7.85786 4.5 12C4.5 16.1421 7.85786 19.5 12 19.5C16.1421 19.5 19.5 16.1421 19.5 12C19.5 7.85786 16.1421 4.5 12 4.5ZM12 17C9.23858 17 7 14.7614 7 12C7 9.23858 9.23858 7 12 7C14.7614 7 17 9.23858 17 12C17 14.7614 14.7614 17 12 17Z" fill="white"/>
+            </svg>
+            Add to Chrome (Free)
+        </a>
+        
+        <div style="font-size: 0.9rem; color: #777; margin-top: 15px;">
+            <span style="color:#27ae60">●</span> Compatible with Chrome, Edge, Brave, Opera.
         </div>
     </div>
 
@@ -199,7 +178,7 @@
         
         <div class="card">
             <h3>⚡ CPU Efficient</h3>
-            <p>Designed to be lightweight. No heavy libraries. The script only activates on AI platforms (ChatGPT, Copilot, Gemini).</p>
+            <p>Designed to be lightweight. No heavy libraries. The script only activates on AI platforms.</p>
         </div>
     </div>
 
@@ -210,7 +189,7 @@
         <p><strong>GuardIA</strong> is a transparency-focused project.</p>
         <p>License: Personal Use Only (Free). Commercial use requires a license.</p>
         <p style="margin-top: 20px;">
-            <a href="#" style="color:#3b78e7; text-decoration:none;">View Source on GitHub</a>
+            <a href="#" style="color:#3b78e7; text-decoration:none;">View Source Code (Transparency)</a>
         </p>
     </div>
 </footer>
