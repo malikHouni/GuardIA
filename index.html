@@ -1,64 +1,219 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GuardIA - European AI Firewall</title>
+    <title>GuardIA - The European AI Firewall</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #f4f7f6; color: #333; }
-        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; text-align: center; }
-        .logo { width: 120px; height: 120px; margin-bottom: 20px; }
-        h1 { color: #2c3e50; margin-bottom: 10px; }
-        .subtitle { color: #7f8c8d; font-size: 1.2em; margin-bottom: 30px; }
-        .btn-download {
-            background-color: #3498db; color: white; padding: 15px 30px; text-decoration: none;
-            border-radius: 5px; font-size: 1.2em; font-weight: bold; display: inline-block;
-            transition: background 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        /* Style inspiré du "Manifesto" Open Source : Propre, Rapide, Sans fioritures */
+        :root {
+            --primary: #3b78e7; /* Bleu GuardIA */
+            --dark: #2c3e50;
+            --bg: #f8f9fa;
+            --text: #333;
+            --border: #e1e4e8;
         }
-        .btn-download:hover { background-color: #2980b9; transform: translateY(-2px); }
-        .features { margin-top: 50px; text-align: left; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .features h2 { border-bottom: 2px solid #ecf0f1; padding-bottom: 10px; }
-        .footer { margin-top: 50px; font-size: 0.8em; color: #95a5a6; }
-        .install-guide { background: #e8f4f8; padding: 15px; border-radius: 5px; margin-top: 20px; text-align: left; font-size: 0.9em; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        /* En-tête style "Console/Dashboard" */
+        header {
+            background-color: #24292e; /* Couleur GitHub/Code */
+            color: white;
+            padding: 20px 0;
+            border-bottom: 4px solid var(--primary);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo { width: 48px; height: 48px; }
+
+        h1 { margin: 0; font-size: 1.8rem; font-weight: 600; }
+        .version { font-size: 0.8rem; background: #444; padding: 2px 8px; border-radius: 4px; margin-left: 10px; color: #ddd; }
+        
+        /* Corps de page */
+        main { padding: 40px 0; }
+
+        .hero-section {
+            background: white;
+            padding: 30px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            margin-bottom: 30px;
+        }
+
+        h2 { border-bottom: 1px solid var(--border); padding-bottom: 10px; color: var(--dark); margin-top: 0; }
+        
+        .manifesto {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        /* Le bouton de téléchargement "Technique" */
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .btn-primary:hover { background-color: #2a5db0; }
+        .sub-text { font-size: 0.85rem; color: #777; margin-top: 5px; }
+
+        /* Grille de fonctionnalités style "Specs" */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+        }
+        .card h3 { margin-top: 0; color: var(--dark); font-size: 1.1rem; }
+        .card p { font-size: 0.95rem; color: #666; margin-bottom: 0; }
+
+        /* Badges de confiance */
+        .badge-list { margin-top: 15px; }
+        .badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            padding: 3px 8px;
+            border-radius: 3px;
+            margin-right: 5px;
+            font-family: monospace;
+        }
+        .badge-green { background: #e6fffa; color: #2c7a7b; border: 1px solid #b2f5ea; }
+        .badge-blue { background: #ebf8ff; color: #2b6cb0; border: 1px solid #bee3f8; }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: #888;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        
+        code { background: #f0f0f0; padding: 2px 5px; border-radius: 3px; font-family: Consolas, monospace; }
+        
+        /* Guide d'installation minimaliste */
+        .install-box {
+            background-color: #f1f8ff;
+            border: 1px solid #c8e1ff;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
+        }
+        .install-box h4 { margin: 0 0 10px 0; color: #0366d6; }
+        .install-box ol { margin: 0; padding-left: 20px; font-size: 0.95rem; }
+        .install-box li { margin-bottom: 5px; }
+
     </style>
 </head>
 <body>
 
-<div class="container">
-    <img src="icon128.png" alt="GuardIA Logo" class="logo">
-    
-    <h1>GuardIA</h1>
-    <div class="subtitle">The European AI Firewall (GDPR & DLP)</div>
+<header>
+    <div class="container header-content">
+        <img src="icon128.png" alt="Logo" class="logo">
+        <div>
+            <h1>GuardIA <span class="version">v2.5</span></h1>
+            <div style="font-size: 0.9rem; color: #aaa; margin-top: 2px;">European AI Firewall</div>
+        </div>
+    </div>
+</header>
 
-    <p>Protégez vos données sensibles avant qu'elles ne soient envoyées à ChatGPT, Copilot ou Gemini.</p>
+<main class="container">
 
-    <a href="GuardIA_v2.5.zip" class="btn-download">⬇️ Télécharger GuardIA v2.5</a>
+    <div class="hero-section">
+        <h2>Finally, an efficient privacy shield for AI.</h2>
+        <p class="manifesto">
+            GuardIA is <strong>not</strong> an "AI assistant". It is a strict <strong>Data Loss Prevention (DLP)</strong> firewall.
+            <br>
+            It blocks sensitive data (IBAN, SSN, Files) from leaving your browser before it reaches ChatGPT or Copilot.
+        </p>
 
-    <div class="features">
-        <h2>🔒 Pourquoi GuardIA ?</h2>
-        <ul>
-            <li><strong>Sécurité Locale :</strong> Analyse 100% dans votre navigateur. Aucune donnée ne sort.</li>
-            <li><strong>Bloque les Identifiants :</strong> N° Sécu, Passeports, Emails, Téléphones.</li>
-            <li><strong>Bloque la Finance :</strong> IBAN, Cartes bancaires.</li>
-            <li><strong>Nouveau :</strong> Scanne les fichiers avant l'upload (CSV, TXT, PDF...).</li>
-        </ul>
+        <div style="margin: 25px 0;">
+            <a href="GuardIA_v2.5.zip" class="btn-primary">Download GuardIA v2.5 (ZIP)</a>
+            <div class="sub-text">Free for personal use. Open source code (Source Available).</div>
+        </div>
 
-        <div class="install-guide">
-            <strong>📥 Comment installer (Extension non listée) :</strong>
+        <div class="install-box">
+            <h4>⚡ Manual Installation (Developer Mode)</h4>
             <ol>
-                <li>Téléchargez et décompressez le fichier ZIP.</li>
-                <li>Ouvrez <code>chrome://extensions</code> dans votre navigateur.</li>
-                <li>Activez le <strong>Mode développeur</strong> (en haut à droite).</li>
-                <li>Cliquez sur <strong>Charger l'extension non empaquetée</strong> et choisissez le dossier.</li>
+                <li>Unzip the file.</li>
+                <li>Go to <code>chrome://extensions</code> in your browser.</li>
+                <li>Enable <strong>Developer mode</strong> (top right).</li>
+                <li>Drag and drop the unzipped folder.</li>
             </ol>
         </div>
     </div>
 
-    <div class="footer">
-        <p>License: Personal Use Only (Free). Commercial use prohibited without license.</p>
-        <p>&copy; 2026 GuardIA Security.</p>
+    <div class="grid">
+        <div class="card">
+            <h3>🔒 Privacy by Design</h3>
+            <p>100% Local Processing. No data is ever sent to a remote server. GuardIA works offline inside your browser's memory.</p>
+            <div class="badge-list">
+                <span class="badge badge-green">LOCAL ONLY</span>
+                <span class="badge badge-green">ZERO ANALYTICS</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>🇪🇺 GDPR & Compliance</h3>
+            <p>Blocks European identifiers: French NIR (Sécu), IBANs, Passports, CNI. Also supports US SSN and ZIP codes.</p>
+            <div class="badge-list">
+                <span class="badge badge-blue">GDPR</span>
+                <span class="badge badge-blue">CCPA</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>📂 File Leak Protection</h3>
+            <p>Automatically scans uploaded files (CSV, TXT, PDF, Code) for sensitive patterns before the AI receives them.</p>
+        </div>
+        
+        <div class="card">
+            <h3>⚡ CPU Efficient</h3>
+            <p>Designed to be lightweight. No heavy libraries. The script only activates on AI platforms (ChatGPT, Copilot, Gemini).</p>
+        </div>
     </div>
-</div>
+
+</main>
+
+<footer>
+    <div class="container">
+        <p><strong>GuardIA</strong> is a transparency-focused project.</p>
+        <p>License: Personal Use Only (Free). Commercial use requires a license.</p>
+        <p style="margin-top: 20px;">
+            <a href="#" style="color:#3b78e7; text-decoration:none;">View Source on GitHub</a>
+        </p>
+    </div>
+</footer>
 
 </body>
 </html>
