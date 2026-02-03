@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="I7ebekzg3qSA2u8mFpgpcDMJZEmhtIrcBunqLBIdXHs" />
     <title>GuardIA - The European AI Firewall</title>
+    <link rel="icon" type="image/png" href="icon128.png">
     <style>
-        /* Style "No Nonsense" (Inspiré de uBlock Origin) */
+        /* Style "Clean Tech" (Inspiré de uBlock Origin) */
         :root {
-            --primary: #3b78e7; /* Bleu GuardIA */
+            --primary: #3b78e7;
             --dark: #2c3e50;
             --bg: #f8f9fa;
             --text: #333;
@@ -27,7 +28,7 @@
         header {
             background-color: #24292e;
             color: white;
-            padding: 20px 0;
+            padding: 15px 0;
             border-bottom: 4px solid var(--primary);
         }
 
@@ -40,6 +41,12 @@
         .header-content {
             display: flex;
             align-items: center;
+            justify-content: space-between; /* Espace entre logo et langues */
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
             gap: 15px;
         }
 
@@ -48,6 +55,27 @@
         h1 { margin: 0; font-size: 1.8rem; font-weight: 600; }
         .version { font-size: 0.8rem; background: #444; padding: 2px 8px; border-radius: 4px; margin-left: 10px; color: #ddd; }
         
+        /* Sélecteur de langue */
+        .lang-selector {
+            font-size: 0.9rem;
+        }
+        .lang-btn {
+            background: none;
+            border: 1px solid #444;
+            color: #aaa;
+            padding: 2px 8px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-left: 5px;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+        .lang-btn:hover, .lang-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
         main { padding: 40px 0; }
 
         .hero-section {
@@ -56,7 +84,7 @@
             border: 1px solid var(--border);
             border-radius: 6px;
             margin-bottom: 30px;
-            text-align: center; /* Centré pour le Store */
+            text-align: center;
         }
 
         h2 { border-bottom: 1px solid var(--border); padding-bottom: 10px; color: var(--dark); margin-top: 0; text-align: left;}
@@ -68,7 +96,6 @@
             text-align: left;
         }
 
-        /* Bouton Chrome Store */
         .btn-store {
             display: inline-flex;
             align-items: center;
@@ -84,10 +111,9 @@
         }
         .btn-store:hover { background-color: #2a5db0; transform: translateY(-2px); }
         
-        /* Icône Chrome dans le bouton */
         .chrome-icon {
             width: 24px; height: 24px; margin-right: 12px;
-            filter: brightness(0) invert(1); /* Rend l'icône blanche */
+            filter: brightness(0) invert(1);
         }
 
         .grid {
@@ -123,10 +149,20 @@
 
 <header>
     <div class="container header-content">
-        <img src="icon128.png" alt="Logo" class="logo">
-        <div>
-            <h1>GuardIA <span class="version">v2.5</span></h1>
-            <div style="font-size: 0.9rem; color: #aaa; margin-top: 2px;">European AI Firewall</div>
+        <div class="brand">
+            <img src="icon128.png" alt="Logo" class="logo">
+            <div>
+                <h1>GuardIA <span class="version">v2.5</span></h1>
+                <div style="font-size: 0.9rem; color: #aaa; margin-top: 2px;" data-i18n="subtitle">European AI Firewall</div>
+            </div>
+        </div>
+        
+        <div class="lang-selector">
+            <button class="lang-btn active" onclick="setLang('en')">EN</button>
+            <button class="lang-btn" onclick="setLang('fr')">FR</button>
+            <button class="lang-btn" onclick="setLang('es')">ES</button>
+            <button class="lang-btn" onclick="setLang('de')">DE</button>
+            <button class="lang-btn" onclick="setLang('it')">IT</button>
         </div>
     </div>
 </header>
@@ -134,8 +170,8 @@
 <main class="container">
 
     <div class="hero-section">
-        <h2>Finally, an efficient privacy shield for AI.</h2>
-        <p class="manifesto">
+        <h2 data-i18n="hero_title">Finally, an efficient privacy shield for AI.</h2>
+        <p class="manifesto" data-i18n="hero_text">
             GuardIA is <strong>not</strong> an "AI assistant". It is a strict <strong>Data Loss Prevention (DLP)</strong> firewall.<br>
             It blocks sensitive data (IBAN, SSN, Files) from leaving your browser before it reaches ChatGPT or Copilot.
         </p>
@@ -145,18 +181,18 @@
                 <path d="M12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0ZM12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22Z" fill="white" fill-opacity="0.2"/>
                 <path d="M12 4.5C7.85786 4.5 4.5 7.85786 4.5 12C4.5 16.1421 7.85786 19.5 12 19.5C16.1421 19.5 19.5 16.1421 19.5 12C19.5 7.85786 16.1421 4.5 12 4.5ZM12 17C9.23858 17 7 14.7614 7 12C7 9.23858 9.23858 7 12 7C14.7614 7 17 9.23858 17 12C17 14.7614 14.7614 17 12 17Z" fill="white"/>
             </svg>
-            Add to Chrome (Free)
+            <span data-i18n="btn_download">Add to Chrome (Free)</span>
         </a>
         
         <div style="font-size: 0.9rem; color: #777; margin-top: 15px;">
-            <span style="color:#27ae60">●</span> Compatible with Chrome, Edge, Brave, Opera.
+            <span style="color:#27ae60">●</span> <span data-i18n="compat">Compatible with Chrome, Edge, Brave, Opera.</span>
         </div>
     </div>
 
     <div class="grid">
         <div class="card">
-            <h3>🔒 Privacy by Design</h3>
-            <p>100% Local Processing. No data is ever sent to a remote server. GuardIA works offline inside your browser's memory.</p>
+            <h3 data-i18n="feat1_title">🔒 Privacy by Design</h3>
+            <p data-i18n="feat1_text">100% Local Processing. No data is ever sent to a remote server. GuardIA works offline inside your browser's memory.</p>
             <div class="badge-list">
                 <span class="badge badge-green">LOCAL ONLY</span>
                 <span class="badge badge-green">ZERO ANALYTICS</span>
@@ -164,8 +200,8 @@
         </div>
 
         <div class="card">
-            <h3>🇪🇺 GDPR & Compliance</h3>
-            <p>Blocks European identifiers: French NIR (Sécu), IBANs, Passports, CNI. Also supports US SSN and ZIP codes.</p>
+            <h3 data-i18n="feat2_title">🇪🇺 GDPR & Compliance</h3>
+            <p data-i18n="feat2_text">Blocks European identifiers: French NIR (Sécu), IBANs, Passports, CNI. Also supports US SSN and ZIP codes.</p>
             <div class="badge-list">
                 <span class="badge badge-blue">GDPR</span>
                 <span class="badge badge-blue">CCPA</span>
@@ -173,13 +209,13 @@
         </div>
 
         <div class="card">
-            <h3>📂 File Leak Protection</h3>
-            <p>Automatically scans uploaded files (CSV, TXT, PDF, Code) for sensitive patterns before the AI receives them.</p>
+            <h3 data-i18n="feat3_title">📂 File Leak Protection</h3>
+            <p data-i18n="feat3_text">Automatically scans uploaded files (CSV, TXT, PDF, Code) for sensitive patterns before the AI receives them.</p>
         </div>
         
         <div class="card">
-            <h3>⚡ CPU Efficient</h3>
-            <p>Designed to be lightweight. No heavy libraries. The script only activates on AI platforms.</p>
+            <h3 data-i18n="feat4_title">⚡ CPU Efficient</h3>
+            <p data-i18n="feat4_text">Designed to be lightweight. No heavy libraries. The script only activates on AI platforms.</p>
         </div>
     </div>
 
@@ -187,13 +223,136 @@
 
 <footer>
     <div class="container">
-        <p><strong>GuardIA</strong> is a transparency-focused project.</p>
-        <p>License: Personal Use Only (Free). Commercial use requires a license.</p>
+        <p><strong data-i18n="footer_brand">GuardIA</strong> <span data-i18n="footer_desc">is a transparency-focused project.</span></p>
+        <p data-i18n="footer_license">License: Personal Use Only (Free). Commercial use requires a license.</p>
         <p style="margin-top: 20px;">
-            <a href="#" style="color:#3b78e7; text-decoration:none;">View Source Code (Transparency)</a>
+            <a href="#" style="color:#3b78e7; text-decoration:none;" data-i18n="footer_source">View Source Code (Transparency)</a>
         </p>
     </div>
 </footer>
+
+<script>
+    // --- TRADUCTIONS ---
+    const translations = {
+        en: {
+            subtitle: "European AI Firewall",
+            hero_title: "Finally, an efficient privacy shield for AI.",
+            hero_text: "GuardIA is <strong>not</strong> an AI assistant. It is a strict <strong>Data Loss Prevention (DLP)</strong> firewall.<br>It blocks sensitive data (IBAN, SSN, Files) from leaving your browser before it reaches ChatGPT or Copilot.",
+            btn_download: "Add to Chrome (Free)",
+            compat: "Compatible with Chrome, Edge, Brave, Opera.",
+            feat1_title: "🔒 Privacy by Design",
+            feat1_text: "100% Local Processing. No data is ever sent to a remote server. GuardIA works offline inside your browser's memory.",
+            feat2_title: "🇪🇺 GDPR & Compliance",
+            feat2_text: "Blocks European identifiers: French NIR (Sécu), IBANs, Passports, CNI. Also supports US SSN and ZIP codes.",
+            feat3_title: "📂 File Leak Protection",
+            feat3_text: "Automatically scans uploaded files (CSV, TXT, PDF, Code) for sensitive patterns before the AI receives them.",
+            feat4_title: "⚡ CPU Efficient",
+            feat4_text: "Designed to be lightweight. No heavy libraries. The script only activates on AI platforms.",
+            footer_desc: "is a transparency-focused project.",
+            footer_license: "License: Personal Use Only (Free). Commercial use requires a license.",
+            footer_source: "View Source Code (Transparency)"
+        },
+        fr: {
+            subtitle: "Pare-feu Européen pour l'IA",
+            hero_title: "Enfin un bouclier efficace pour vos données.",
+            hero_text: "GuardIA n'est <strong>pas</strong> un assistant IA. C'est un pare-feu strict de <strong>Prévention de Fuite de Données (DLP)</strong>.<br>Il empêche vos secrets (IBAN, Sécu, Fichiers) de quitter votre navigateur vers ChatGPT ou Copilot.",
+            btn_download: "Ajouter à Chrome (Gratuit)",
+            compat: "Compatible avec Chrome, Edge, Brave, Opera.",
+            feat1_title: "🔒 Confidentialité Totale",
+            feat1_text: "Traitement 100% local. Aucune donnée n'est envoyée vers un serveur. GuardIA fonctionne hors-ligne dans votre navigateur.",
+            feat2_title: "🇪🇺 Conformité RGPD",
+            feat2_text: "Bloque les identifiants européens : Numéros de Sécu (NIR), IBANs, Passeports, CNI. Supporte aussi les formats US.",
+            feat3_title: "📂 Protection des Fichiers",
+            feat3_text: "Scanne automatiquement les fichiers envoyés (CSV, TXT, PDF, Code) pour bloquer les données cachées avant l'envoi.",
+            feat4_title: "⚡ Ultra Léger",
+            feat4_text: "Conçu pour la performance. Pas de librairies lourdes. Le script ne s'active que sur les plateformes IA.",
+            footer_desc: "est un projet axé sur la transparence.",
+            footer_license: "Licence : Usage Personnel Gratuit. Usage commercial soumis à licence.",
+            footer_source: "Voir le Code Source (Transparence)"
+        },
+        es: {
+            subtitle: "Cortafuegos Europeo para IA",
+            hero_title: "Por fin, un escudo de privacidad eficaz.",
+            hero_text: "GuardIA <strong>no</strong> es un asistente IA. Es un cortafuegos estricto de <strong>Prevención de Pérdida de Datos (DLP)</strong>.<br>Bloquea datos sensibles (IBAN, DNI, Archivos) antes de que lleguen a ChatGPT o Copilot.",
+            btn_download: "Añadir a Chrome (Gratis)",
+            compat: "Compatible con Chrome, Edge, Brave, Opera.",
+            feat1_title: "🔒 Privacidad por Diseño",
+            feat1_text: "Procesamiento 100% local. Ningún dato se envía a servidores remotos. Todo ocurre en su navegador.",
+            feat2_title: "🇪🇺 Cumplimiento RGPD",
+            feat2_text: "Bloquea identificadores europeos: IBAN, Pasaportes, DNI/NIE. También soporta formatos de EE.UU.",
+            feat3_title: "📂 Protección de Archivos",
+            feat3_text: "Escanea automáticamente archivos subidos (CSV, TXT, PDF) en busca de datos sensibles antes del envío.",
+            feat4_title: "⚡ Eficiente y Ligero",
+            feat4_text: "Diseñado para ser rápido. Sin librerías pesadas. Solo se activa en plataformas de IA.",
+            footer_desc: "es un proyecto centrado en la transparencia.",
+            footer_license: "Licencia: Uso Personal Gratuito. El uso comercial requiere licencia.",
+            footer_source: "Ver Código Fuente (Transparencia)"
+        },
+        de: {
+            subtitle: "Die Europäische KI-Firewall",
+            hero_title: "Endlich ein effizienter Schutzschild für KI.",
+            hero_text: "GuardIA ist <strong>kein</strong> KI-Assistent. Es ist eine strikte <strong>Data Loss Prevention (DLP)</strong> Firewall.<br>Sie blockiert sensible Daten (IBAN, Dateien), bevor sie ChatGPT oder Copilot erreichen.",
+            btn_download: "Zu Chrome hinzufügen (Gratis)",
+            compat: "Kompatibel mit Chrome, Edge, Brave, Opera.",
+            feat1_title: "🔒 Privacy by Design",
+            feat1_text: "100% lokale Verarbeitung. Keine Daten werden an Server gesendet. GuardIA arbeitet offline im Browser.",
+            feat2_title: "🇪🇺 DSGVO Konformität",
+            feat2_text: "Blockiert europäische Kennungen: IBAN, Pässe, Ausweise. Unterstützt auch US-Formate.",
+            feat3_title: "📂 Dateischutz",
+            feat3_text: "Scannt hochgeladene Dateien (CSV, TXT, PDF) automatisch auf sensible Muster vor dem Senden.",
+            feat4_title: "⚡ CPU Effizient",
+            feat4_text: "Leichtgewichtig konzipiert. Keine schweren Bibliotheken. Das Skript aktiviert sich nur auf KI-Plattformen.",
+            footer_desc: "ist ein auf Transparenz ausgerichtetes Projekt.",
+            footer_license: "Lizenz: Kostenlos für den persönlichen Gebrauch. Kommerzielle Nutzung erfordert Lizenz.",
+            footer_source: "Quellcode ansehen (Transparenz)"
+        },
+        it: {
+            subtitle: "Firewall Europeo per l'IA",
+            hero_title: "Finalmente uno scudo efficace per la privacy.",
+            hero_text: "GuardIA <strong>non</strong> è un assistente IA. È un firewall rigoroso per la <strong>Prevenzione della Perdita di Dati (DLP)</strong>.<br>Blocca i dati sensibili (IBAN, Codice Fiscale, File) prima che lascino il browser.",
+            btn_download: "Aggiungi a Chrome (Gratis)",
+            compat: "Compatibile con Chrome, Edge, Brave, Opera.",
+            feat1_title: "🔒 Privacy by Design",
+            feat1_text: "Elaborazione 100% locale. Nessun dato viene inviato a server remoti. GuardIA lavora offline.",
+            feat2_title: "🇪🇺 Conformità GDPR",
+            feat2_text: "Blocca identificatori europei: IBAN, Passaporti, Codice Fiscale. Supporta anche formati USA.",
+            feat3_title: "📂 Protezione File",
+            feat3_text: "Scansiona automaticamente i file caricati (CSV, TXT, PDF) per bloccare segreti prima dell'invio.",
+            feat4_title: "⚡ Ultra Leggero",
+            feat4_text: "Progettato per la velocità. Niente librerie pesanti. Lo script si attiva solo sulle piattaforme IA.",
+            footer_desc: "è un progetto focalizzato sulla trasparenza.",
+            footer_license: "Licenza: Uso Personale Gratuito. L'uso commerciale richiede una licenza.",
+            footer_source: "Vedi Codice Sorgente"
+        }
+    };
+
+    function setLang(lang) {
+        // Mettre à jour les textes
+        const t = translations[lang] || translations['en'];
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (t[key]) el.innerHTML = t[key];
+        });
+
+        // Mettre à jour les boutons (visuel)
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if(btn.textContent.toLowerCase() === lang) btn.classList.add('active');
+        });
+        
+        // Sauvegarder (optionnel)
+        document.documentElement.lang = lang;
+    }
+
+    // Détection automatique au chargement
+    const userLang = navigator.language || navigator.userLanguage;
+    const shortLang = userLang.split('-')[0]; // 'fr-FR' -> 'fr'
+    if (['fr', 'es', 'de', 'it'].includes(shortLang)) {
+        setLang(shortLang);
+    } else {
+        setLang('en');
+    }
+</script>
 
 </body>
 </html>
